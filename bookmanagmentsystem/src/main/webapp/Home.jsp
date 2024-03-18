@@ -72,7 +72,7 @@ table td a:hover {
 			</tr>
 			<tr>
 				<td>3).</td>
-				<td><a href="delete.jsp">Delete a Book</a></td>
+				<td><a href="deleteBook.jsp">Delete a Book</a></td>
 			</tr>
 			<tr>
 				<td>4).</td>

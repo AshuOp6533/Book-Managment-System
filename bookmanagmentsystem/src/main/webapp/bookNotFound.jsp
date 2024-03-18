@@ -31,6 +31,25 @@ h2 {
 	text-align: center;
 	color: #ff0000;
 }
+
+.home-link {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.home-link a {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: rgb(0, 123, 255);
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+.home-link a:hover {
+	background-color: rgb(0, 86, 179);
+}
 </style>
 </head>
 <body>
@@ -39,6 +58,9 @@ h2 {
 		<div class="not-found">
 			<p>The book you are looking for was not found.</p>
 		</div>
+	</div>
+	<div class="home-link">
+		<a href="Home.jsp">Home</a>
 	</div>
 </body>
 </html>
