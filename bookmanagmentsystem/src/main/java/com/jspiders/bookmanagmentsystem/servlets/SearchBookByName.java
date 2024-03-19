@@ -21,8 +21,8 @@ public class SearchBookByName extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String name = req.getParameter("name");
 		List<Book> books = SearchBookByNameJDBC.searchByName(name);
-		req.setAttribute("book", books);
-		if (books != null && !books.isEmpty()) {
+		req.setAttribute("books", books);
+		if (books != null ) {
 			req.getRequestDispatcher("searchByName.jsp").forward(req, resp);
 		} else {
 			req.getRequestDispatcher("bookNotFound.jsp").forward(req, resp);

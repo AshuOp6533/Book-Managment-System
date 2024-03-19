@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search Book By Price</title>
+<title>Search Book By Name</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -86,15 +86,15 @@ table th, table td {
 </head>
 <body>
 	<div class="container">
-		<h2>Search Book By Price</h2>
+		<h2>Search Book By Name</h2>
 		<div class="form-container">
 			<form action="searchBookByName" >
-				<input type="text" name="name" placeholder="Enter Name of Book"> <input
-					type="submit" value="Search">
+				<input type="text" name="name" placeholder="Enter Name of Book"> 
+				<input type="submit" value="Search">
 			</form>
 		</div>
 		<%
-		List<Book> books = (List<Book>) request.getAttribute("books");
+		List<Book> books = (List) request.getAttribute("books");
 		if (books != null && !books.isEmpty()) {
 		%>
 		<table>
