@@ -1,3 +1,5 @@
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
 <%@ page import="com.jspiders.bookmanagmentsystem.object.Book"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search Book By Name</title>
+<title>Search Book By Price</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -84,54 +86,49 @@ table th, table td {
 </head>
 <body>
 	<div class="container">
-		<h2>Search Book By Name</h2>
+		<h2>Search Book By Price</h2>
 		<div class="form-container">
-			<form action="searchBookByName" method="get">
-				<input type="text" name="name" placeholder="Enter Book Name">
-				<input type="submit" value="Search">
+			<form action="searchBookByName" >
+				<input type="text" name="name" placeholder="Enter Name of Book"> <input
+					type="submit" value="Search">
 			</form>
 		</div>
 		<%
-		Book book = (Book) request.getAttribute("book");
-		if (book != null) {
+		List<Book> books = (List<Book>) request.getAttribute("books");
+		if (books != null && !books.isEmpty()) {
 		%>
 		<table>
 			<tr>
 				<th>ID</th>
-				<td><%=book.getId()%></td>
-			</tr>
-			<tr>
 				<th>Name</th>
-				<td><%=book.getName()%></td>
-			</tr>
-			<tr>
 				<th>Author</th>
-				<td><%=book.getAuthor()%></td>
-			</tr>
-			<tr>
 				<th>Pages</th>
-				<td><%=book.getPages()%></td>
-			</tr>
-			<tr>
 				<th>Price</th>
-				<td><%=book.getPrice()%></td>
-			</tr>
-			<tr>
 				<th>Genre</th>
-				<td><%=book.getGenre()%></td>
-			</tr>
-			<tr>
 				<th>Language</th>
+			</tr>
+			<%
+			for (Book book : books) {
+			%>
+			<tr>
+				<td><%=book.getId()%></td>
+				<td><%=book.getName()%></td>
+				<td><%=book.getAuthor()%></td>
+				<td><%=book.getPages()%></td>
+				<td><%=book.getPrice()%></td>
+				<td><%=book.getGenre()%></td>
 				<td><%=book.getLanguage()%></td>
 			</tr>
+			<%
+			}
+			%>
 		</table>
 		<%
-		}
+		} 
 		%>
 		<div class="home-link">
 			<a href="Home.jsp">Home</a>
 		</div>
-
 	</div>
 </body>
 </html>

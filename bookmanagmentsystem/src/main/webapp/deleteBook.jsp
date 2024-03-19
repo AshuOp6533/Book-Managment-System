@@ -89,11 +89,15 @@ table th, table td {
 	<div class="container">
 		<h2>DELETE BOOK BY ID</h2>
 		<div class="form-container">
-			<form action="deleteBook" >
+			<form action="deleteBook">
 				<label for="id">Id : </label> <input type="text" id="id" name="id"
 					placeholder="Enter id here"> <input type="submit"
 					value="Submit">
 			</form>
+		</div>
+		<div class="home-link">
+			<a href="http://localhost:8080/bookmanagmentsystem/searchAllBooks">See
+				All Books</a>
 		</div>
 		<div class="home-link">
 			<a href="Home.jsp">Home</a>
