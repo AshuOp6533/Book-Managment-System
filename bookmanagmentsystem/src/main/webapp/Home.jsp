@@ -76,7 +76,7 @@ table td a:hover {
 			</tr>
 			<tr>
 				<td>4).</td>
-				<td><a href="updateBook.jsp">Update Book Information</a></td>
+				<td><a href="updateBookById.jsp">Update Book Information</a></td>
 			</tr>
 		</table>
 	</div>
