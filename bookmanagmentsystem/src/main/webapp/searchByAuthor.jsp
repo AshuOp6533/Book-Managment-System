@@ -1,4 +1,6 @@
 <%@ page import="com.jspiders.bookmanagmentsystem.object.Book"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -90,48 +92,43 @@ table th, table td {
 				<input type="text" name="author" placeholder="Enter Author Name">
 				<input type="submit" value="Search">
 			</form>
-		</div>
+			</div>
 		<%
-		Book book = (Book) request.getAttribute("book");
-		if (book != null) {
+		List<Book> books = (List) request.getAttribute("books");
+		if (books != null && !books.isEmpty()) {
 		%>
 		<table>
 			<tr>
 				<th>ID</th>
-				<td><%=book.getId()%></td>
-			</tr>
-			<tr>
 				<th>Name</th>
-				<td><%=book.getName()%></td>
-			</tr>
-			<tr>
 				<th>Author</th>
-				<td><%=book.getAuthor()%></td>
-			</tr>
-			<tr>
 				<th>Pages</th>
-				<td><%=book.getPages()%></td>
-			</tr>
-			<tr>
 				<th>Price</th>
-				<td><%=book.getPrice()%></td>
-			</tr>
-			<tr>
 				<th>Genre</th>
-				<td><%=book.getGenre()%></td>
-			</tr>
-			<tr>
 				<th>Language</th>
+			</tr>
+			<%
+			for (Book book : books) {
+			%>
+			<tr>
+				<td><%=book.getId()%></td>
+				<td><%=book.getName()%></td>
+				<td><%=book.getAuthor()%></td>
+				<td><%=book.getPages()%></td>
+				<td><%=book.getPrice()%></td>
+				<td><%=book.getGenre()%></td>
 				<td><%=book.getLanguage()%></td>
 			</tr>
+			<%
+			}
+			%>
 		</table>
 		<%
-		}
+		} 
 		%>
 		<div class="home-link">
 			<a href="Home.jsp">Home</a>
 		</div>
-
 	</div>
 </body>
 </html>

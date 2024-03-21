@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.jspiders.bookmanagmentsystem.object.Book;
 
@@ -32,8 +34,8 @@ public class SearchBookByAuthorJDBC {
 		}
 	}
 
-	public static Book searchByAuthor(String name) {
-		Book book = null;
+	public static List<Book> searchByAuthor(String name) {
+		List<Book> books = new ArrayList<Book>();
 		try {
 			openConnection();
 			query = "SELECT * FROM book WHERE author=?";
@@ -47,7 +49,8 @@ public class SearchBookByAuthorJDBC {
 				double price = resultSet.getDouble("price");
 				String genre = resultSet.getString("genre");
 				String language = resultSet.getString("language");
-				book = new Book(id, name, author, pages, price, genre, language);
+				Book book = new Book(id, name, author, pages, price, genre, language);
+                books.add(book);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,6 +61,6 @@ public class SearchBookByAuthorJDBC {
 				e.printStackTrace();
 			}
 		}
-		return book;
+		return books;
 	}
 }

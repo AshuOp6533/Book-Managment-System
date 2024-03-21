@@ -1,6 +1,7 @@
 package com.jspiders.bookmanagmentsystem.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +20,9 @@ public class SearchBookByAuthor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String author = req.getParameter("author");
-        Book book = SearchBookByAuthorJDBC.searchByAuthor(author);
-        req.setAttribute("book", book);
-        if (book != null) {
+        List<Book> books = SearchBookByAuthorJDBC.searchByAuthor(author);
+        req.setAttribute("books", books);
+        if (books != null ) {
             req.getRequestDispatcher("searchByAuthor.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("bookNotFound.jsp").forward(req, resp);
