@@ -34,17 +34,18 @@ public class SearchBookByAuthorJDBC {
 		}
 	}
 
-	public static List<Book> searchByAuthor(String name) {
+	public static List<Book> searchByAuthor(String author) {
 		List<Book> books = new ArrayList<Book>();
 		try {
 			openConnection();
 			query = "SELECT * FROM book WHERE author=?";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, name);
+			preparedStatement.setString(1, author);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				int id = resultSet.getInt("id");
-				String author = resultSet.getString("author");
+				String name = resultSet.getString("name");
+//				String author = resultSet.getString("author");
 				int pages = resultSet.getInt("pages");
 				double price = resultSet.getDouble("price");
 				String genre = resultSet.getString("genre");
