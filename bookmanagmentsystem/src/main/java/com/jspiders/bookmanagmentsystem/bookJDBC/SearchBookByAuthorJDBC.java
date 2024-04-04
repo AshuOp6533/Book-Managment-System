@@ -38,9 +38,9 @@ public class SearchBookByAuthorJDBC {
 		List<Book> books = new ArrayList<Book>();
 		try {
 			openConnection();
-			query = "SELECT * FROM book WHERE author=?";
+			query = "SELECT * FROM book WHERE author like ?";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, author);
+			preparedStatement.setString(1, "%" + author + "%");
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				int id = resultSet.getInt("id");
@@ -50,8 +50,8 @@ public class SearchBookByAuthorJDBC {
 				double price = resultSet.getDouble("price");
 				String genre = resultSet.getString("genre");
 				String language = resultSet.getString("language");
-				Book book = new Book(id, name, author, pages, price, genre, language);
-                books.add(book);
+				Book book = new Book(id, name, resultSet.getString("author"), pages, price, genre, language);
+				books.add(book);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

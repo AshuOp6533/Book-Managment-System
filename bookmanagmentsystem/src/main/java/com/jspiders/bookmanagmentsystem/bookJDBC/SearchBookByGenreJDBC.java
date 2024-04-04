@@ -38,9 +38,9 @@ public class SearchBookByGenreJDBC {
         List<Book> books = new ArrayList<Book>();
         try {
             openConnection();
-            query = "SELECT * FROM book WHERE genre=?";
+            query = "SELECT * FROM book WHERE genre LIKE ?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, genre);
+            preparedStatement.setString(1, "%"+genre+"%");
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -49,7 +49,7 @@ public class SearchBookByGenreJDBC {
                 int pages = resultSet.getInt("pages");
                 double price = resultSet.getDouble("price");
                 String language = resultSet.getString("language");
-                Book book = new Book(id, name, author, pages, price, genre, language);
+                Book book = new Book(id, name, author, pages, price, resultSet.getString("genre"), language);
                 books.add(book);
             }
         } catch (Exception e) {
